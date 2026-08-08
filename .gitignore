@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+dist/
+
+# Environment (secret!)
+.env
+contracts/.env
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/lib/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+web/dist/
