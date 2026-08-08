@@ -59,18 +59,18 @@
       },
       {
         "name": "credentialType",
-        "type": "string",
-        "internalType": "string"
+        "type": "uint8",
+        "internalType": "enum Credentials.CredentialType"
       },
       {
         "name": "title",
-        "type": "string",
-        "internalType": "string"
+        "type": "bytes32",
+        "internalType": "bytes32"
       },
       {
         "name": "ipfsHash",
-        "type": "string",
-        "internalType": "string"
+        "type": "bytes32",
+        "internalType": "bytes32"
       },
       {
         "name": "issuedAt",
@@ -113,18 +113,18 @@
           },
           {
             "name": "credentialType",
-            "type": "string",
-            "internalType": "string"
+            "type": "uint8",
+            "internalType": "enum Credentials.CredentialType"
           },
           {
             "name": "title",
-            "type": "string",
-            "internalType": "string"
+            "type": "bytes32",
+            "internalType": "bytes32"
           },
           {
             "name": "ipfsHash",
-            "type": "string",
-            "internalType": "string"
+            "type": "bytes32",
+            "internalType": "bytes32"
           },
           {
             "name": "issuedAt",
@@ -214,18 +214,18 @@
       },
       {
         "name": "_credentialType",
-        "type": "string",
-        "internalType": "string"
+        "type": "uint8",
+        "internalType": "uint8"
       },
       {
         "name": "_title",
-        "type": "string",
-        "internalType": "string"
+        "type": "bytes32",
+        "internalType": "bytes32"
       },
       {
         "name": "_ipfsHash",
-        "type": "string",
-        "internalType": "string"
+        "type": "bytes32",
+        "internalType": "bytes32"
       }
     ],
     "outputs": [
@@ -337,13 +337,13 @@
       },
       {
         "name": "credentialType",
-        "type": "string",
-        "internalType": "string"
+        "type": "uint8",
+        "internalType": "uint8"
       },
       {
         "name": "title",
-        "type": "string",
-        "internalType": "string"
+        "type": "bytes32",
+        "internalType": "bytes32"
       },
       {
         "name": "issuedAt",
@@ -377,15 +377,15 @@
       },
       {
         "name": "credentialType",
-        "type": "string",
+        "type": "uint8",
         "indexed": false,
-        "internalType": "string"
+        "internalType": "uint8"
       },
       {
         "name": "title",
-        "type": "string",
+        "type": "bytes32",
         "indexed": false,
-        "internalType": "string"
+        "internalType": "bytes32"
       }
     ],
     "anonymous": false

@@ -4,12 +4,16 @@ pragma solidity ^0.8.28;
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Credentials is Ownable {
+
+    /// @dev 0 = Reference Letter, 1 = Certificate, 2 = Recommendation Letter
+    enum CredentialType { ReferenceLetter, Certificate, RecommendationLetter }
+
     struct Credential {
         address issuer;
         address holder;
-        string credentialType; // "Sertifikat" / "Paklaring" / "Surat Referensi"
-        string title;          // "Workshop Monad 101"
-        string ipfsHash;       // hash dokumen di IPFS (placeholder untuk MVP)
+        CredentialType credentialType;
+        bytes32 title;
+        bytes32 ipfsHash;
         uint256 issuedAt;
         bool active;
     }
@@ -20,7 +24,7 @@ contract Credentials is Ownable {
     mapping(address => bool) public authorizedIssuers;
     mapping(address => uint256[]) public holderCredentials;
 
-    event CredentialIssued(uint256 indexed id, address indexed issuer, address indexed holder, string credentialType, string title);
+    event CredentialIssued(uint256 indexed id, address indexed issuer, address indexed holder, uint8 credentialType, bytes32 title);
     event CredentialRevoked(uint256 indexed id);
     event IssuerAuthorized(address indexed issuer);
     event IssuerRevoked(address indexed issuer);
@@ -31,11 +35,13 @@ contract Credentials is Ownable {
 
     // === ISSUER MANAGEMENT ===
     function authorizeIssuer(address _issuer) external onlyOwner {
+        require(_issuer != address(0), "Invalid issuer");
         authorizedIssuers[_issuer] = true;
         emit IssuerAuthorized(_issuer);
     }
 
     function revokeIssuer(address _issuer) external onlyOwner {
+        require(_issuer != address(0), "Invalid issuer");
         authorizedIssuers[_issuer] = false;
         emit IssuerRevoked(_issuer);
     }
@@ -43,17 +49,19 @@ contract Credentials is Ownable {
     // === ISSUE ===
     function issueCredential(
         address _holder,
-        string calldata _credentialType,
-        string calldata _title,
-        string calldata _ipfsHash
+        uint8 _credentialType,
+        bytes32 _title,
+        bytes32 _ipfsHash
     ) external returns (uint256) {
         require(authorizedIssuers[msg.sender], "Not authorized issuer");
+        require(_holder != address(0), "Invalid holder");
+        require(_credentialType <= uint8(CredentialType.RecommendationLetter), "Invalid type");
 
         uint256 id = nextId++;
         credentials[id] = Credential({
             issuer: msg.sender,
             holder: _holder,
-            credentialType: _credentialType,
+            credentialType: CredentialType(_credentialType),
             title: _title,
             ipfsHash: _ipfsHash,
             issuedAt: block.timestamp,
@@ -85,12 +93,12 @@ contract Credentials is Ownable {
         bool isValid,
         address issuer,
         address holder,
-        string memory credentialType,
-        string memory title,
+        uint8 credentialType,
+        bytes32 title,
         uint256 issuedAt
     ) {
         Credential memory c = credentials[_id];
-        return (c.active && authorizedIssuers[c.issuer], c.issuer, c.holder, c.credentialType, c.title, c.issuedAt);
+        return (c.active && authorizedIssuers[c.issuer], c.issuer, c.holder, uint8(c.credentialType), c.title, c.issuedAt);
     }
 
     function isAuthorizedIssuer(address _issuer) external view returns (bool) {
