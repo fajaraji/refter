@@ -22,8 +22,8 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <div className="logo-icon">R</div>
-          <h1>RefPer</h1>
+          <div className="logo-icon">T</div>
+          <h1>RefTer</h1>
         </div>
         <div className="top-right">
           <WalletConnect account={account} onConnect={setAccount} />

@@ -1,6 +1,26 @@
-# RefPer - On-chain Credential MVP
+# RefTer - On-chain Reference Letters
 
-RefPer issues and verifies reference letters on Monad Testnet.
+RefTer issues and verifies reference letters on Monad Testnet. An authorized issuer writes a credential for a holder wallet, and anyone can verify it instantly using only a Credential ID.
+
+## The Problem
+
+Reference letters (paklaring / employment records) are critical for hiring, yet today's system is broken:
+
+- **Easy to forge.** A paper letter or PDF can be copied, edited, or fabricated. Verifiers cannot tell a real letter from a fake one.
+- **Slow to verify.** HR teams must call or email former employers, wait for replies, and trust a stranger's word. Hiring is delayed by days.
+- **Fragile and centralized.** Records live in one company's inbox or HR database. When a company is shut down or an email is lost, the proof disappears.
+- **Not owned by the holder.** Employees cannot access their own work history after leaving a company; they must beg for copies.
+- **No tamper evidence.** Even a genuine letter can be altered after issuance with no trace.
+
+## The Solution
+
+RefTer turns a reference letter into a verifiable on-chain record:
+
+- An **authorized issuer** signs an `issueCredential` transaction to a **holder wallet**.
+- The credential is stored on Monad with the issuer, holder, issue time, type, and status.
+- Any **verifier** can check the Credential ID publicly without a wallet or database.
+- The issuer can **revoke** a credential, and verification immediately reflects the new status.
+- Blockchain finality makes the record permanent, transparent, and tamper-evident.
 
 ## Role Model
 
@@ -71,3 +91,4 @@ Keep the frontend, documentation, and deployment metadata on the same address. I
 - There is no database, indexer, or encrypted document storage yet.
 - The Roles tab checks the connected wallet; a global issuer directory requires an event indexer.
 - A revoked credential cannot be restored.
+- Identity trust depends on the owner authorizing legitimate issuer wallets, not on KYC of the issuer.

@@ -12,19 +12,19 @@ function localAnswer(userInput: string, account?: string): string | null {
   }
 
   if (/what\s+is\s+monad|explain\s+monad|about\s+monad/i.test(query)) {
-    return 'Monad is the EVM blockchain used by RefPer to store credentials transparently. RefPer currently runs on Monad Testnet.'
+    return 'Monad is the EVM blockchain used by RefTer to store credentials transparently. RefTer currently runs on Monad Testnet.'
   }
 
   if (/what\s+is\s+blockchain|explain\s+blockchain/i.test(query)) {
-    return 'A blockchain is a public ledger that records transactions and contract data. RefPer reads credentials directly from the smart contract without an application database.'
+    return 'A blockchain is a public ledger that records transactions and contract data. RefTer reads credentials directly from the smart contract without an application database.'
   }
 
   if (/what\s+is\s+(?:a\s+)?reference\s+letter|explain\s+(?:a\s+)?reference\s+letter/i.test(query)) {
     return 'A reference letter is an employment record issued by an organization to a holder. In the MVP, a credential stores its type, title, issuer, holder, issue time, and active status.'
   }
 
-  if (/what\s+is\s+refper|explain\s+refper|about\s+refper/i.test(query)) {
-    return 'RefPer is a credential issuance and verification application on Monad. The owner manages issuers, issuers create credentials, holders receive them, and verifiers check them by ID.'
+  if (/what\s+is\s+refter|explain\s+refter|about\s+refter/i.test(query)) {
+    return 'RefTer is a credential issuance and verification application on Monad. The owner manages issuers, issuers create credentials, holders receive them, and verifiers check them by ID.'
   }
 
   if (/^hello|^hi|^hey|^good\s+(?:morning|afternoon|evening)/i.test(query)) {

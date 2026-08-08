@@ -15,7 +15,7 @@ interface Props {
 }
 
 type FormType = 'issue' | 'verify' | 'list' | 'revoke' | null
-const CHAT_STORAGE_PREFIX = 'refper_chat_v2_'
+const CHAT_STORAGE_PREFIX = 'refter_chat_v2_'
 
 const CHIPS: { icon: string; label: string; form: FormType }[] = [
   { icon: '📄', label: 'Issue Reference Letter', form: 'issue' },
@@ -36,7 +36,7 @@ function loadMessages(account: string | null): Message[] {
 
 const WELCOME: Message = {
   role: 'agent',
-  text: 'Hello! RefPer lets issuers create credentials for holder wallets, holders view their credentials, and anyone verify someone else\'s credential by ID.',
+  text: 'Hello! RefTer lets issuers create credentials for holder wallets, holders view their credentials, and anyone verify someone else\'s credential by ID.',
 }
 
 export default function ChatAgent({ account }: Props) {
