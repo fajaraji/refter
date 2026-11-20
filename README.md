@@ -2,6 +2,14 @@
 
 RefTer issues and verifies reference letters on Monad Testnet. An authorized issuer writes a credential for a holder wallet, and anyone can verify it instantly using only a Credential ID.
 
+## Explore the implementation
+
+Follow a reference letter through three roles. The owner authorizes an issuer, the issuer signs a credential for a holder, and a verifier checks its ID without connecting a wallet.
+
+- [Credential and role rules](contracts/src/Credentials.sol)
+- [Contract tests](contracts/test/Credentials.t.sol)
+- [Run the verifier interface](web/README.md)
+
 ## The Problem
 
 Reference letters (paklaring / employment records) are critical for hiring, yet today's system is broken:
